@@ -1,0 +1,10 @@
+[package]
+name = "sokol-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+name = "sokol_rust"
+path = "src/lib.rs"
