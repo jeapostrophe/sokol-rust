@@ -25,13 +25,11 @@ pub struct Vertex {
 pub struct ElementRange {
     base_element: u32,
     num_elements: u32,
-    __pad: [u32; 3],
 }
 #[repr(C)]
 pub struct SizesItem {
     num: u32,
     size: u32,
-    __pad: [u32; 3],
 }
 #[repr(C)]
 pub struct Sizes {

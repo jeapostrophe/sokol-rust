@@ -136,7 +136,6 @@ pub struct PixelformatInfo {
     blend: bool,
     msaa: bool,
     depth: bool,
-    __pad: [u32; 3],
 }
 #[repr(C)]
 pub struct Features {
@@ -149,7 +148,6 @@ pub struct Features {
     image_clamp_to_border: bool,
     mrt_independent_blend_state: bool,
     mrt_independent_write_mask: bool,
-    __pad: [u32; 3],
 }
 #[repr(C)]
 pub struct Limits {
@@ -559,14 +557,12 @@ pub struct BufferLayoutDesc {
     stride: i32,
     step_func: VertexStep,
     step_rate: i32,
-    __pad: [u32; 2],
 }
 #[repr(C)]
 pub struct VertexAttrDesc {
     buffer_index: i32,
     offset: i32,
     format: VertexFormat,
-    __pad: [u32; 2],
 }
 #[repr(C)]
 pub struct LayoutDesc {
