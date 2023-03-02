@@ -167,11 +167,11 @@ pub enum AndroidTooltype {
 }
 #[repr(C)]
 pub struct Touchpoint {
-    identifier: usize,
-    pos_x: f32,
-    pos_y: f32,
-    android_tooltype: AndroidTooltype,
-    changed: bool,
+    pub identifier: usize,
+    pub pos_x: f32,
+    pub pos_y: f32,
+    pub android_tooltype: AndroidTooltype,
+    pub changed: bool,
 }
 #[repr(C)]
 pub enum Mousebutton {
@@ -189,94 +189,94 @@ pub const SAPP_MODIFIER_RMB: i32 = 512;
 pub const SAPP_MODIFIER_MMB: i32 = 1024;
 #[repr(C)]
 pub struct Event {
-    frame_count: u64,
-    r#type: EventType,
-    key_code: Keycode,
-    char_code: u32,
-    key_repeat: bool,
-    modifiers: u32,
-    mouse_button: Mousebutton,
-    mouse_x: f32,
-    mouse_y: f32,
-    mouse_dx: f32,
-    mouse_dy: f32,
-    scroll_x: f32,
-    scroll_y: f32,
-    num_touches: i32,
-    touches: [Touchpoint; 8],
-    window_width: i32,
-    window_height: i32,
-    framebuffer_width: i32,
-    framebuffer_height: i32,
+    pub frame_count: u64,
+    pub r#type: EventType,
+    pub key_code: Keycode,
+    pub char_code: u32,
+    pub key_repeat: bool,
+    pub modifiers: u32,
+    pub mouse_button: Mousebutton,
+    pub mouse_x: f32,
+    pub mouse_y: f32,
+    pub mouse_dx: f32,
+    pub mouse_dy: f32,
+    pub scroll_x: f32,
+    pub scroll_y: f32,
+    pub num_touches: i32,
+    pub touches: [Touchpoint; 8],
+    pub window_width: i32,
+    pub window_height: i32,
+    pub framebuffer_width: i32,
+    pub framebuffer_height: i32,
 }
 #[repr(C)]
 pub struct Range {
-    ptr: *const std::ffi::c_void,
-    size: usize,
+    pub ptr: *const std::ffi::c_void,
+    pub size: usize,
 }
 #[repr(C)]
 pub struct ImageDesc {
-    width: i32,
-    height: i32,
-    pixels: Range,
+    pub width: i32,
+    pub height: i32,
+    pub pixels: Range,
 }
 #[repr(C)]
 pub struct IconDesc {
-    sokol_default: bool,
-    images: [ImageDesc; 8],
+    pub sokol_default: bool,
+    pub images: [ImageDesc; 8],
 }
 #[repr(C)]
 pub struct Allocator {
-    alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
-    free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
+    pub free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Logger {
-    log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Desc {
-    init_cb: *const extern fn() -> (),
-    frame_cb: *const extern fn() -> (),
-    cleanup_cb: *const extern fn() -> (),
-    event_cb: *const extern fn(*const Event) -> (),
-    fail_cb: *const extern fn(*const u8) -> (),
-    user_data: *mut std::ffi::c_void,
-    init_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> (),
-    frame_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> (),
-    cleanup_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> (),
-    event_userdata_cb: *const extern fn(*const Event, *mut std::ffi::c_void) -> (),
-    fail_userdata_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
-    width: i32,
-    height: i32,
-    sample_count: i32,
-    swap_interval: i32,
-    high_dpi: bool,
-    fullscreen: bool,
-    alpha: bool,
-    window_title: *mut u8,
-    enable_clipboard: bool,
-    clipboard_size: i32,
-    enable_dragndrop: bool,
-    max_dropped_files: i32,
-    max_dropped_file_path_length: i32,
-    icon: IconDesc,
-    allocator: Allocator,
-    logger: Logger,
-    gl_force_gles2: bool,
-    gl_major_version: i32,
-    gl_minor_version: i32,
-    win32_console_utf8: bool,
-    win32_console_create: bool,
-    win32_console_attach: bool,
-    html5_canvas_name: *mut u8,
-    html5_canvas_resize: bool,
-    html5_preserve_drawing_buffer: bool,
-    html5_premultiplied_alpha: bool,
-    html5_ask_leave_site: bool,
-    ios_keyboard_resizes_canvas: bool,
+    pub init_cb: *const extern fn() -> (),
+    pub frame_cb: *const extern fn() -> (),
+    pub cleanup_cb: *const extern fn() -> (),
+    pub event_cb: *const extern fn(*const Event) -> (),
+    pub fail_cb: *const extern fn(*const u8) -> (),
+    pub user_data: *mut std::ffi::c_void,
+    pub init_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> (),
+    pub frame_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> (),
+    pub cleanup_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> (),
+    pub event_userdata_cb: *const extern fn(*const Event, *mut std::ffi::c_void) -> (),
+    pub fail_userdata_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
+    pub width: i32,
+    pub height: i32,
+    pub sample_count: i32,
+    pub swap_interval: i32,
+    pub high_dpi: bool,
+    pub fullscreen: bool,
+    pub alpha: bool,
+    pub window_title: *mut u8,
+    pub enable_clipboard: bool,
+    pub clipboard_size: i32,
+    pub enable_dragndrop: bool,
+    pub max_dropped_files: i32,
+    pub max_dropped_file_path_length: i32,
+    pub icon: IconDesc,
+    pub allocator: Allocator,
+    pub logger: Logger,
+    pub gl_force_gles2: bool,
+    pub gl_major_version: i32,
+    pub gl_minor_version: i32,
+    pub win32_console_utf8: bool,
+    pub win32_console_create: bool,
+    pub win32_console_attach: bool,
+    pub html5_canvas_name: *mut u8,
+    pub html5_canvas_resize: bool,
+    pub html5_preserve_drawing_buffer: bool,
+    pub html5_premultiplied_alpha: bool,
+    pub html5_ask_leave_site: bool,
+    pub ios_keyboard_resizes_canvas: bool,
 }
 #[repr(C)]
 pub enum Html5FetchError {
@@ -286,19 +286,19 @@ pub enum Html5FetchError {
 }
 #[repr(C)]
 pub struct Html5FetchResponse {
-    succeeded: bool,
-    error_code: Html5FetchError,
-    file_index: i32,
-    data: Range,
-    buffer: Range,
-    user_data: *mut std::ffi::c_void,
+    pub succeeded: bool,
+    pub error_code: Html5FetchError,
+    pub file_index: i32,
+    pub data: Range,
+    pub buffer: Range,
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Html5FetchRequest {
-    dropped_file_index: i32,
-    callback: *const extern fn(*const Html5FetchResponse) -> (),
-    buffer: Range,
-    user_data: *mut std::ffi::c_void,
+    pub dropped_file_index: i32,
+    pub callback: *const extern fn(*const Html5FetchResponse) -> (),
+    pub buffer: Range,
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub enum MouseCursor {

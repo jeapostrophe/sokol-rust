@@ -4,11 +4,11 @@ use super::gfx as sg;
 
 #[repr(C)]
 pub struct Pipeline {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Context {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub enum Error {
@@ -22,35 +22,35 @@ pub enum Error {
 }
 #[repr(C)]
 pub struct ContextDesc {
-    max_vertices: i32,
-    max_commands: i32,
-    color_format: sg::PixelFormat,
-    depth_format: sg::PixelFormat,
-    sample_count: i32,
+    pub max_vertices: i32,
+    pub max_commands: i32,
+    pub color_format: sg::PixelFormat,
+    pub depth_format: sg::PixelFormat,
+    pub sample_count: i32,
 }
 #[repr(C)]
 pub struct Allocator {
-    alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
-    free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
+    pub free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Logger {
-    log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Desc {
-    max_vertices: i32,
-    max_commands: i32,
-    context_pool_size: i32,
-    pipeline_pool_size: i32,
-    color_format: sg::PixelFormat,
-    depth_format: sg::PixelFormat,
-    sample_count: i32,
-    face_winding: sg::FaceWinding,
-    allocator: Allocator,
-    logger: Logger,
+    pub max_vertices: i32,
+    pub max_commands: i32,
+    pub context_pool_size: i32,
+    pub pipeline_pool_size: i32,
+    pub color_format: sg::PixelFormat,
+    pub depth_format: sg::PixelFormat,
+    pub sample_count: i32,
+    pub face_winding: sg::FaceWinding,
+    pub allocator: Allocator,
+    pub logger: Logger,
 }
 extern { pub fn sgl_setup(desc: *const Desc) -> (); }
 pub fn setup(desc: Desc) -> () { unsafe {

@@ -3,27 +3,27 @@
 
 #[repr(C)]
 pub struct Allocator {
-    alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
-    free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
+    pub free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Logger {
-    log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Desc {
-    sample_rate: i32,
-    num_channels: i32,
-    buffer_frames: i32,
-    packet_frames: i32,
-    num_packets: i32,
-    stream_cb: *const extern fn(*mut f32, i32, i32) -> (),
-    stream_userdata_cb: *const extern fn(*mut f32, i32, i32, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
-    allocator: Allocator,
-    logger: Logger,
+    pub sample_rate: i32,
+    pub num_channels: i32,
+    pub buffer_frames: i32,
+    pub packet_frames: i32,
+    pub num_packets: i32,
+    pub stream_cb: *const extern fn(*mut f32, i32, i32) -> (),
+    pub stream_userdata_cb: *const extern fn(*mut f32, i32, i32, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
+    pub allocator: Allocator,
+    pub logger: Logger,
 }
 extern { pub fn saudio_setup(desc: *const Desc) -> (); }
 pub fn setup(desc: Desc) -> () { unsafe {

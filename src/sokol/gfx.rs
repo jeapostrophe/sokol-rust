@@ -3,32 +3,32 @@
 
 #[repr(C)]
 pub struct Buffer {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Image {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Shader {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Pipeline {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Pass {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Context {
-    id: u32,
+    pub id: u32,
 }
 #[repr(C)]
 pub struct Range {
-    ptr: *const std::ffi::c_void,
-    size: usize,
+    pub ptr: *const std::ffi::c_void,
+    pub size: usize,
 }
 pub const SG_INVALID_ID: i32 = 0;
 pub const SG_NUM_SHADER_STAGES: i32 = 2;
@@ -43,10 +43,10 @@ pub const SG_MAX_MIPMAPS: i32 = 16;
 pub const SG_MAX_TEXTUREARRAY_LAYERS: i32 = 128;
 #[repr(C)]
 pub struct Color {
-    r: f32,
-    g: f32,
-    b: f32,
-    a: f32,
+    pub r: f32,
+    pub g: f32,
+    pub b: f32,
+    pub a: f32,
 }
 #[repr(C)]
 pub enum Backend {
@@ -130,34 +130,34 @@ pub enum PixelFormat {
 }
 #[repr(C)]
 pub struct PixelformatInfo {
-    sample: bool,
-    filter: bool,
-    render: bool,
-    blend: bool,
-    msaa: bool,
-    depth: bool,
+    pub sample: bool,
+    pub filter: bool,
+    pub render: bool,
+    pub blend: bool,
+    pub msaa: bool,
+    pub depth: bool,
 }
 #[repr(C)]
 pub struct Features {
-    instancing: bool,
-    origin_top_left: bool,
-    multiple_render_targets: bool,
-    msaa_render_targets: bool,
-    imagetype_3d: bool,
-    imagetype_array: bool,
-    image_clamp_to_border: bool,
-    mrt_independent_blend_state: bool,
-    mrt_independent_write_mask: bool,
+    pub instancing: bool,
+    pub origin_top_left: bool,
+    pub multiple_render_targets: bool,
+    pub msaa_render_targets: bool,
+    pub imagetype_3d: bool,
+    pub imagetype_array: bool,
+    pub image_clamp_to_border: bool,
+    pub mrt_independent_blend_state: bool,
+    pub mrt_independent_write_mask: bool,
 }
 #[repr(C)]
 pub struct Limits {
-    max_image_size_2d: i32,
-    max_image_size_cube: i32,
-    max_image_size_3d: i32,
-    max_image_size_array: i32,
-    max_image_array_layers: i32,
-    max_vertex_attrs: i32,
-    gl_max_vertex_uniform_vectors: i32,
+    pub max_image_size_2d: i32,
+    pub max_image_size_cube: i32,
+    pub max_image_size_3d: i32,
+    pub max_image_size_array: i32,
+    pub max_image_array_layers: i32,
+    pub max_vertex_attrs: i32,
+    pub gl_max_vertex_uniform_vectors: i32,
 }
 #[repr(C)]
 pub enum ResourceState {
@@ -429,335 +429,335 @@ pub enum Action {
 }
 #[repr(C)]
 pub struct ColorAttachmentAction {
-    action: Action,
-    value: Color,
+    pub action: Action,
+    pub value: Color,
 }
 #[repr(C)]
 pub struct DepthAttachmentAction {
-    action: Action,
-    value: f32,
+    pub action: Action,
+    pub value: f32,
 }
 #[repr(C)]
 pub struct StencilAttachmentAction {
-    action: Action,
-    value: u8,
+    pub action: Action,
+    pub value: u8,
 }
 #[repr(C)]
 pub struct PassAction {
-    _start_canary: u32,
-    colors: [ColorAttachmentAction; 4],
-    depth: DepthAttachmentAction,
-    stencil: StencilAttachmentAction,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub colors: [ColorAttachmentAction; 4],
+    pub depth: DepthAttachmentAction,
+    pub stencil: StencilAttachmentAction,
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct Bindings {
-    _start_canary: u32,
-    vertex_buffers: [Buffer; 8],
-    vertex_buffer_offsets: [i32; 8],
-    index_buffer: Buffer,
-    index_buffer_offset: i32,
-    vs_images: [Image; 12],
-    fs_images: [Image; 12],
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub vertex_buffers: [Buffer; 8],
+    pub vertex_buffer_offsets: [i32; 8],
+    pub index_buffer: Buffer,
+    pub index_buffer_offset: i32,
+    pub vs_images: [Image; 12],
+    pub fs_images: [Image; 12],
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct BufferDesc {
-    _start_canary: u32,
-    size: usize,
-    r#type: BufferType,
-    usage: Usage,
-    data: Range,
-    label: *mut u8,
-    gl_buffers: [u32; 2],
-    mtl_buffers: [*const std::ffi::c_void; 2],
-    d3d11_buffer: *const std::ffi::c_void,
-    wgpu_buffer: *const std::ffi::c_void,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub size: usize,
+    pub r#type: BufferType,
+    pub usage: Usage,
+    pub data: Range,
+    pub label: *mut u8,
+    pub gl_buffers: [u32; 2],
+    pub mtl_buffers: [*const std::ffi::c_void; 2],
+    pub d3d11_buffer: *const std::ffi::c_void,
+    pub wgpu_buffer: *const std::ffi::c_void,
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct ImageData {
-    subimage: [[Range; 6]; 16],
+    pub subimage: [[Range; 6]; 16],
 }
 #[repr(C)]
 pub struct ImageDesc {
-    _start_canary: u32,
-    r#type: ImageType,
-    render_target: bool,
-    width: i32,
-    height: i32,
-    num_slices: i32,
-    num_mipmaps: i32,
-    usage: Usage,
-    pixel_format: PixelFormat,
-    sample_count: i32,
-    min_filter: Filter,
-    mag_filter: Filter,
-    wrap_u: Wrap,
-    wrap_v: Wrap,
-    wrap_w: Wrap,
-    border_color: BorderColor,
-    max_anisotropy: u32,
-    min_lod: f32,
-    max_lod: f32,
-    data: ImageData,
-    label: *mut u8,
-    gl_textures: [u32; 2],
-    gl_texture_target: u32,
-    mtl_textures: [*const std::ffi::c_void; 2],
-    d3d11_texture: *const std::ffi::c_void,
-    d3d11_shader_resource_view: *const std::ffi::c_void,
-    wgpu_texture: *const std::ffi::c_void,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub r#type: ImageType,
+    pub render_target: bool,
+    pub width: i32,
+    pub height: i32,
+    pub num_slices: i32,
+    pub num_mipmaps: i32,
+    pub usage: Usage,
+    pub pixel_format: PixelFormat,
+    pub sample_count: i32,
+    pub min_filter: Filter,
+    pub mag_filter: Filter,
+    pub wrap_u: Wrap,
+    pub wrap_v: Wrap,
+    pub wrap_w: Wrap,
+    pub border_color: BorderColor,
+    pub max_anisotropy: u32,
+    pub min_lod: f32,
+    pub max_lod: f32,
+    pub data: ImageData,
+    pub label: *mut u8,
+    pub gl_textures: [u32; 2],
+    pub gl_texture_target: u32,
+    pub mtl_textures: [*const std::ffi::c_void; 2],
+    pub d3d11_texture: *const std::ffi::c_void,
+    pub d3d11_shader_resource_view: *const std::ffi::c_void,
+    pub wgpu_texture: *const std::ffi::c_void,
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct ShaderAttrDesc {
-    name: *mut u8,
-    sem_name: *mut u8,
-    sem_index: i32,
+    pub name: *mut u8,
+    pub sem_name: *mut u8,
+    pub sem_index: i32,
 }
 #[repr(C)]
 pub struct ShaderUniformDesc {
-    name: *mut u8,
-    r#type: UniformType,
-    array_count: i32,
+    pub name: *mut u8,
+    pub r#type: UniformType,
+    pub array_count: i32,
 }
 #[repr(C)]
 pub struct ShaderUniformBlockDesc {
-    size: usize,
-    layout: UniformLayout,
-    uniforms: [ShaderUniformDesc; 16],
+    pub size: usize,
+    pub layout: UniformLayout,
+    pub uniforms: [ShaderUniformDesc; 16],
 }
 #[repr(C)]
 pub struct ShaderImageDesc {
-    name: *mut u8,
-    image_type: ImageType,
-    sampler_type: SamplerType,
+    pub name: *mut u8,
+    pub image_type: ImageType,
+    pub sampler_type: SamplerType,
 }
 #[repr(C)]
 pub struct ShaderStageDesc {
-    source: *mut u8,
-    bytecode: Range,
-    entry: *mut u8,
-    d3d11_target: *mut u8,
-    uniform_blocks: [ShaderUniformBlockDesc; 4],
-    images: [ShaderImageDesc; 12],
+    pub source: *mut u8,
+    pub bytecode: Range,
+    pub entry: *mut u8,
+    pub d3d11_target: *mut u8,
+    pub uniform_blocks: [ShaderUniformBlockDesc; 4],
+    pub images: [ShaderImageDesc; 12],
 }
 #[repr(C)]
 pub struct ShaderDesc {
-    _start_canary: u32,
-    attrs: [ShaderAttrDesc; 16],
-    vs: ShaderStageDesc,
-    fs: ShaderStageDesc,
-    label: *mut u8,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub attrs: [ShaderAttrDesc; 16],
+    pub vs: ShaderStageDesc,
+    pub fs: ShaderStageDesc,
+    pub label: *mut u8,
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct BufferLayoutDesc {
-    stride: i32,
-    step_func: VertexStep,
-    step_rate: i32,
+    pub stride: i32,
+    pub step_func: VertexStep,
+    pub step_rate: i32,
 }
 #[repr(C)]
 pub struct VertexAttrDesc {
-    buffer_index: i32,
-    offset: i32,
-    format: VertexFormat,
+    pub buffer_index: i32,
+    pub offset: i32,
+    pub format: VertexFormat,
 }
 #[repr(C)]
 pub struct LayoutDesc {
-    buffers: [BufferLayoutDesc; 8],
-    attrs: [VertexAttrDesc; 16],
+    pub buffers: [BufferLayoutDesc; 8],
+    pub attrs: [VertexAttrDesc; 16],
 }
 #[repr(C)]
 pub struct StencilFaceState {
-    compare: CompareFunc,
-    fail_op: StencilOp,
-    depth_fail_op: StencilOp,
-    pass_op: StencilOp,
+    pub compare: CompareFunc,
+    pub fail_op: StencilOp,
+    pub depth_fail_op: StencilOp,
+    pub pass_op: StencilOp,
 }
 #[repr(C)]
 pub struct StencilState {
-    enabled: bool,
-    front: StencilFaceState,
-    back: StencilFaceState,
-    read_mask: u8,
-    write_mask: u8,
-    r#ref: u8,
+    pub enabled: bool,
+    pub front: StencilFaceState,
+    pub back: StencilFaceState,
+    pub read_mask: u8,
+    pub write_mask: u8,
+    pub r#ref: u8,
 }
 #[repr(C)]
 pub struct DepthState {
-    pixel_format: PixelFormat,
-    compare: CompareFunc,
-    write_enabled: bool,
-    bias: f32,
-    bias_slope_scale: f32,
-    bias_clamp: f32,
+    pub pixel_format: PixelFormat,
+    pub compare: CompareFunc,
+    pub write_enabled: bool,
+    pub bias: f32,
+    pub bias_slope_scale: f32,
+    pub bias_clamp: f32,
 }
 #[repr(C)]
 pub struct BlendState {
-    enabled: bool,
-    src_factor_rgb: BlendFactor,
-    dst_factor_rgb: BlendFactor,
-    op_rgb: BlendOp,
-    src_factor_alpha: BlendFactor,
-    dst_factor_alpha: BlendFactor,
-    op_alpha: BlendOp,
+    pub enabled: bool,
+    pub src_factor_rgb: BlendFactor,
+    pub dst_factor_rgb: BlendFactor,
+    pub op_rgb: BlendOp,
+    pub src_factor_alpha: BlendFactor,
+    pub dst_factor_alpha: BlendFactor,
+    pub op_alpha: BlendOp,
 }
 #[repr(C)]
 pub struct ColorState {
-    pixel_format: PixelFormat,
-    write_mask: ColorMask,
-    blend: BlendState,
+    pub pixel_format: PixelFormat,
+    pub write_mask: ColorMask,
+    pub blend: BlendState,
 }
 #[repr(C)]
 pub struct PipelineDesc {
-    _start_canary: u32,
-    shader: Shader,
-    layout: LayoutDesc,
-    depth: DepthState,
-    stencil: StencilState,
-    color_count: i32,
-    colors: [ColorState; 4],
-    primitive_type: PrimitiveType,
-    index_type: IndexType,
-    cull_mode: CullMode,
-    face_winding: FaceWinding,
-    sample_count: i32,
-    blend_color: Color,
-    alpha_to_coverage_enabled: bool,
-    label: *mut u8,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub shader: Shader,
+    pub layout: LayoutDesc,
+    pub depth: DepthState,
+    pub stencil: StencilState,
+    pub color_count: i32,
+    pub colors: [ColorState; 4],
+    pub primitive_type: PrimitiveType,
+    pub index_type: IndexType,
+    pub cull_mode: CullMode,
+    pub face_winding: FaceWinding,
+    pub sample_count: i32,
+    pub blend_color: Color,
+    pub alpha_to_coverage_enabled: bool,
+    pub label: *mut u8,
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct PassAttachmentDesc {
-    image: Image,
-    mip_level: i32,
-    slice: i32,
+    pub image: Image,
+    pub mip_level: i32,
+    pub slice: i32,
 }
 #[repr(C)]
 pub struct PassDesc {
-    _start_canary: u32,
-    color_attachments: [PassAttachmentDesc; 4],
-    depth_stencil_attachment: PassAttachmentDesc,
-    label: *mut u8,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub color_attachments: [PassAttachmentDesc; 4],
+    pub depth_stencil_attachment: PassAttachmentDesc,
+    pub label: *mut u8,
+    pub _end_canary: u32,
 }
 #[repr(C)]
 pub struct SlotInfo {
-    state: ResourceState,
-    res_id: u32,
-    ctx_id: u32,
+    pub state: ResourceState,
+    pub res_id: u32,
+    pub ctx_id: u32,
 }
 #[repr(C)]
 pub struct BufferInfo {
-    slot: SlotInfo,
-    update_frame_index: u32,
-    append_frame_index: u32,
-    append_pos: i32,
-    append_overflow: bool,
-    num_slots: i32,
-    active_slot: i32,
+    pub slot: SlotInfo,
+    pub update_frame_index: u32,
+    pub append_frame_index: u32,
+    pub append_pos: i32,
+    pub append_overflow: bool,
+    pub num_slots: i32,
+    pub active_slot: i32,
 }
 #[repr(C)]
 pub struct ImageInfo {
-    slot: SlotInfo,
-    upd_frame_index: u32,
-    num_slots: i32,
-    active_slot: i32,
-    width: i32,
-    height: i32,
+    pub slot: SlotInfo,
+    pub upd_frame_index: u32,
+    pub num_slots: i32,
+    pub active_slot: i32,
+    pub width: i32,
+    pub height: i32,
 }
 #[repr(C)]
 pub struct ShaderInfo {
-    slot: SlotInfo,
+    pub slot: SlotInfo,
 }
 #[repr(C)]
 pub struct PipelineInfo {
-    slot: SlotInfo,
+    pub slot: SlotInfo,
 }
 #[repr(C)]
 pub struct PassInfo {
-    slot: SlotInfo,
+    pub slot: SlotInfo,
 }
 #[repr(C)]
 pub struct GlContextDesc {
-    force_gles2: bool,
+    pub force_gles2: bool,
 }
 #[repr(C)]
 pub struct MetalContextDesc {
-    device: *const std::ffi::c_void,
-    renderpass_descriptor_cb: *const extern fn() -> *const std::ffi::c_void,
-    renderpass_descriptor_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    drawable_cb: *const extern fn() -> *const std::ffi::c_void,
-    drawable_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    user_data: *mut std::ffi::c_void,
+    pub device: *const std::ffi::c_void,
+    pub renderpass_descriptor_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub renderpass_descriptor_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub drawable_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub drawable_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct D3d11ContextDesc {
-    device: *const std::ffi::c_void,
-    device_context: *const std::ffi::c_void,
-    render_target_view_cb: *const extern fn() -> *const std::ffi::c_void,
-    render_target_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    depth_stencil_view_cb: *const extern fn() -> *const std::ffi::c_void,
-    depth_stencil_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    user_data: *mut std::ffi::c_void,
+    pub device: *const std::ffi::c_void,
+    pub device_context: *const std::ffi::c_void,
+    pub render_target_view_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub render_target_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub depth_stencil_view_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub depth_stencil_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct WgpuContextDesc {
-    device: *const std::ffi::c_void,
-    render_view_cb: *const extern fn() -> *const std::ffi::c_void,
-    render_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    resolve_view_cb: *const extern fn() -> *const std::ffi::c_void,
-    resolve_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    depth_stencil_view_cb: *const extern fn() -> *const std::ffi::c_void,
-    depth_stencil_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
-    user_data: *mut std::ffi::c_void,
+    pub device: *const std::ffi::c_void,
+    pub render_view_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub render_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub resolve_view_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub resolve_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub depth_stencil_view_cb: *const extern fn() -> *const std::ffi::c_void,
+    pub depth_stencil_view_userdata_cb: *const extern fn(*mut std::ffi::c_void) -> *const std::ffi::c_void,
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct ContextDesc {
-    color_format: i32,
-    depth_format: i32,
-    sample_count: i32,
-    gl: GlContextDesc,
-    metal: MetalContextDesc,
-    d3d11: D3d11ContextDesc,
-    wgpu: WgpuContextDesc,
+    pub color_format: i32,
+    pub depth_format: i32,
+    pub sample_count: i32,
+    pub gl: GlContextDesc,
+    pub metal: MetalContextDesc,
+    pub d3d11: D3d11ContextDesc,
+    pub wgpu: WgpuContextDesc,
 }
 #[repr(C)]
 pub struct CommitListener {
-    func: *const extern fn(*mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub func: *const extern fn(*mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Allocator {
-    alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
-    free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub alloc: *const extern fn(usize, *mut std::ffi::c_void) -> *mut std::ffi::c_void,
+    pub free: *const extern fn(*mut std::ffi::c_void, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Logger {
-    log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
-    user_data: *mut std::ffi::c_void,
+    pub log_cb: *const extern fn(*const u8, *mut std::ffi::c_void) -> (),
+    pub user_data: *mut std::ffi::c_void,
 }
 #[repr(C)]
 pub struct Desc {
-    _start_canary: u32,
-    buffer_pool_size: i32,
-    image_pool_size: i32,
-    shader_pool_size: i32,
-    pipeline_pool_size: i32,
-    pass_pool_size: i32,
-    context_pool_size: i32,
-    uniform_buffer_size: i32,
-    staging_buffer_size: i32,
-    sampler_cache_size: i32,
-    max_commit_listeners: i32,
-    disable_validation: bool,
-    allocator: Allocator,
-    logger: Logger,
-    context: ContextDesc,
-    _end_canary: u32,
+    pub _start_canary: u32,
+    pub buffer_pool_size: i32,
+    pub image_pool_size: i32,
+    pub shader_pool_size: i32,
+    pub pipeline_pool_size: i32,
+    pub pass_pool_size: i32,
+    pub context_pool_size: i32,
+    pub uniform_buffer_size: i32,
+    pub staging_buffer_size: i32,
+    pub sampler_cache_size: i32,
+    pub max_commit_listeners: i32,
+    pub disable_validation: bool,
+    pub allocator: Allocator,
+    pub logger: Logger,
+    pub context: ContextDesc,
+    pub _end_canary: u32,
 }
 extern { pub fn sg_setup(desc: *const Desc) -> (); }
 pub fn setup(desc: Desc) -> () { unsafe {

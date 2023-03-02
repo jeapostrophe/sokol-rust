@@ -4,102 +4,102 @@ use super::gfx as sg;
 
 #[repr(C)]
 pub struct Range {
-    ptr: *const std::ffi::c_void,
-    size: usize,
+    pub ptr: *const std::ffi::c_void,
+    pub size: usize,
 }
 #[repr(C)]
 pub struct Mat4 {
-    m: [[f32; 4]; 4],
+    pub m: [[f32; 4]; 4],
 }
 #[repr(C)]
 pub struct Vertex {
-    x: f32,
-    y: f32,
-    z: f32,
-    normal: u32,
-    u: u16,
-    v: u16,
-    color: u32,
+    pub x: f32,
+    pub y: f32,
+    pub z: f32,
+    pub normal: u32,
+    pub u: u16,
+    pub v: u16,
+    pub color: u32,
 }
 #[repr(C)]
 pub struct ElementRange {
-    base_element: u32,
-    num_elements: u32,
+    pub base_element: u32,
+    pub num_elements: u32,
 }
 #[repr(C)]
 pub struct SizesItem {
-    num: u32,
-    size: u32,
+    pub num: u32,
+    pub size: u32,
 }
 #[repr(C)]
 pub struct Sizes {
-    vertices: SizesItem,
-    indices: SizesItem,
+    pub vertices: SizesItem,
+    pub indices: SizesItem,
 }
 #[repr(C)]
 pub struct BufferItem {
-    buffer: Range,
-    data_size: usize,
-    shape_offset: usize,
+    pub buffer: Range,
+    pub data_size: usize,
+    pub shape_offset: usize,
 }
 #[repr(C)]
 pub struct Buffer {
-    valid: bool,
-    vertices: BufferItem,
-    indices: BufferItem,
+    pub valid: bool,
+    pub vertices: BufferItem,
+    pub indices: BufferItem,
 }
 #[repr(C)]
 pub struct Plane {
-    width: f32,
-    depth: f32,
-    tiles: u16,
-    color: u32,
-    random_colors: bool,
-    merge: bool,
-    transform: Mat4,
+    pub width: f32,
+    pub depth: f32,
+    pub tiles: u16,
+    pub color: u32,
+    pub random_colors: bool,
+    pub merge: bool,
+    pub transform: Mat4,
 }
 #[repr(C)]
 pub struct Box {
-    width: f32,
-    height: f32,
-    depth: f32,
-    tiles: u16,
-    color: u32,
-    random_colors: bool,
-    merge: bool,
-    transform: Mat4,
+    pub width: f32,
+    pub height: f32,
+    pub depth: f32,
+    pub tiles: u16,
+    pub color: u32,
+    pub random_colors: bool,
+    pub merge: bool,
+    pub transform: Mat4,
 }
 #[repr(C)]
 pub struct Sphere {
-    radius: f32,
-    slices: u16,
-    stacks: u16,
-    color: u32,
-    random_colors: bool,
-    merge: bool,
-    transform: Mat4,
+    pub radius: f32,
+    pub slices: u16,
+    pub stacks: u16,
+    pub color: u32,
+    pub random_colors: bool,
+    pub merge: bool,
+    pub transform: Mat4,
 }
 #[repr(C)]
 pub struct Cylinder {
-    radius: f32,
-    height: f32,
-    slices: u16,
-    stacks: u16,
-    color: u32,
-    random_colors: bool,
-    merge: bool,
-    transform: Mat4,
+    pub radius: f32,
+    pub height: f32,
+    pub slices: u16,
+    pub stacks: u16,
+    pub color: u32,
+    pub random_colors: bool,
+    pub merge: bool,
+    pub transform: Mat4,
 }
 #[repr(C)]
 pub struct Torus {
-    radius: f32,
-    ring_radius: f32,
-    sides: u16,
-    rings: u16,
-    color: u32,
-    random_colors: bool,
-    merge: bool,
-    transform: Mat4,
+    pub radius: f32,
+    pub ring_radius: f32,
+    pub sides: u16,
+    pub rings: u16,
+    pub color: u32,
+    pub random_colors: bool,
+    pub merge: bool,
+    pub transform: Mat4,
 }
 extern { pub fn sshape_build_plane(buf: *const Buffer, params: *const Plane) -> Buffer; }
 pub fn build_plane(buf: Buffer, params: Plane) -> Buffer { unsafe {
